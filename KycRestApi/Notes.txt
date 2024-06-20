@@ -15,23 +15,30 @@ Ports/Adapters
     Stream is Adapter (Observable is provided by Adapter)
     There is also an outgoing stream (maybe grpc API -> feature live monitoring stream)
         
-    Specflow tests are also Part of adapter
+    Specflow tests 
+        Are setting adapters for testing
+        One adapter that can act as a mock stream
+        One adapter that can act as a client code (this is an input adapter and therefore the AppCore emits a
+        domain entity like for instance LoyaltyProfile <- DomainClass) to the AppCore
     
 Man muss von innen nach aussen arbeiten
 Nichts passiert ohne Motivation von Business Seite her
 Business sagt an
 
 Use case:
-Determine Customers Loyality Points (maybe we call it loayality profile):
+Determine Customer's Loyalty Points (maybe we call it Loyalty Profile):
+The point allow a ranking to give a bonus to the 100 most loyal customers
     Rules
-        *) Registration since one year mandatory (otherwise we set the loyality to 0)
+        *) Registration since one year mandatory (otherwise we set the loyalty to 0)
         *) Verification of mobile successful (for bonus promotion) mandatory (otherwise set the loayality to 0)
         *) Last identification not older than 2 years +5 (formula depending on the years e.g.: years*5)
         *) Sum of purchases higher than 100 € +10 (formula depending on the amount e.g.: amount/10)
-        *) At least one purchase higher then 10€ in the last month +5
+        *) At least one purchase higher than 10€ in the last month +5
         *) No Fraud Suspections
           
-    
 
+Further ideas:
+We could get a trend for the profile (up, neutral, down)
+Activity Graph ashowing whether the activity of a customer in-, decreases or remains constant
     
 
