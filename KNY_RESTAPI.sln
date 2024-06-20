@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KycRestApi", "KycRestApi\KycRestApi.csproj", "{7862BCBC-ED21-491B-A0D1-54975F730127}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{35B3234E-A531-4F50-92EE-772FD327264D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KycAppCore", "KycAppCore\KycAppCore.csproj", "{15D8DB6C-FF39-4D23-B591-46A38FAF8DC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KycAppCoreTests", "KycAppCoreTests\KycAppCoreTests.csproj", "{C1A4491B-39A5-42F7-979A-DF6663A00170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KycStreamAdapter", "KycStreamAdapter\KycStreamAdapter.csproj", "{3223153C-6016-4672-83BE-63E4AD2D7B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KycAppCoreSpecs", "KycAppCoreSpecs\KycAppCoreSpecs.csproj", "{0C81471C-1FF0-4961-AD26-5BBF629C0B04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7862BCBC-ED21-491B-A0D1-54975F730127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7862BCBC-ED21-491B-A0D1-54975F730127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7862BCBC-ED21-491B-A0D1-54975F730127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7862BCBC-ED21-491B-A0D1-54975F730127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15D8DB6C-FF39-4D23-B591-46A38FAF8DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D8DB6C-FF39-4D23-B591-46A38FAF8DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D8DB6C-FF39-4D23-B591-46A38FAF8DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D8DB6C-FF39-4D23-B591-46A38FAF8DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A4491B-39A5-42F7-979A-DF6663A00170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A4491B-39A5-42F7-979A-DF6663A00170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A4491B-39A5-42F7-979A-DF6663A00170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A4491B-39A5-42F7-979A-DF6663A00170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3223153C-6016-4672-83BE-63E4AD2D7B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3223153C-6016-4672-83BE-63E4AD2D7B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3223153C-6016-4672-83BE-63E4AD2D7B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3223153C-6016-4672-83BE-63E4AD2D7B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C81471C-1FF0-4961-AD26-5BBF629C0B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C81471C-1FF0-4961-AD26-5BBF629C0B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C81471C-1FF0-4961-AD26-5BBF629C0B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C81471C-1FF0-4961-AD26-5BBF629C0B04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C1A4491B-39A5-42F7-979A-DF6663A00170} = {35B3234E-A531-4F50-92EE-772FD327264D}
+		{0C81471C-1FF0-4961-AD26-5BBF629C0B04} = {35B3234E-A531-4F50-92EE-772FD327264D}
+	EndGlobalSection
+EndGlobal

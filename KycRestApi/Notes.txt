@@ -1,0 +1,37 @@
+Application Core 
+
+Ports/Adapters 
+    In Ports (presented as interfaces):
+        IAchievement (GetAchievmentFor(CustomerId))
+        IContactVerfication (GetVerification(CustomerId))
+        IIdentification (GetAssessment(CustomerId))
+        ILoayalityProfiler (GetProfile(CustomerId))
+        IActivityTracer (StartTracing(CustomerGroupSpecification), StopTracing())
+            you will receive alerts for all customers
+        
+
+    Controller is part of UI 
+        Does also the boot strapping
+    Stream is Adapter (Observable is provided by Adapter)
+    There is also an outgoing stream (maybe grpc API -> feature live monitoring stream)
+        
+    Specflow tests are also Part of adapter
+    
+Man muss von innen nach aussen arbeiten
+Nichts passiert ohne Motivation von Business Seite her
+Business sagt an
+
+Use case:
+Determine Customers Loyality Points (maybe we call it loayality profile):
+    Rules
+        *) Registration since one year mandatory (otherwise we set the loyality to 0)
+        *) Verification of mobile successful (for bonus promotion) mandatory (otherwise set the loayality to 0)
+        *) Last identification not older than 2 years +5 (formula depending on the years e.g.: years*5)
+        *) Sum of purchases higher than 100 € +10 (formula depending on the amount e.g.: amount/10)
+        *) At least one purchase higher then 10€ in the last month +5
+        *) No Fraud Suspections
+          
+    
+
+    
+
