@@ -2,5 +2,10 @@
 
 public class LoyaltyProfile
 {
-    public int Points { get; set; }
+    public void GenerateProfile(int customerId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public int Points { get; internal set; }
 }

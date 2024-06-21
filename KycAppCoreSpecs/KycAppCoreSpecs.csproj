@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="TestAdapters\" />
+      <ProjectReference Include="..\KycAppCore\KycAppCore.csproj" />
     </ItemGroup>
 
 </Project>
