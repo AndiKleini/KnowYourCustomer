@@ -4,15 +4,16 @@ using KycAppCore.OutPorts;
 
 namespace KycAppCore;
 
-public class LoyaltyProfile
+public class LoyaltyProfile(ICustomerActivityStream activityStream)
 {
     public void GenerateProfile(int customerId)
     {
-        ActivityStreamProvider.GetStream().Consume(customerId).OfType<SignUpActivityEvent>().
+        activityStream.Consume(customerId).
+            OfType<SignUpActivityEvent>().
             Cast<SignUpActivityEvent>().
             Subscribe(s =>
             {
-                this.Points = s.ActivityTimeStamp < DateTime.Now.AddYears(-1) ? 5 : 0;
+                this.Points = s.ActivityTimeStamp <= DateTime.Now.AddYears(-1) ? 5 : 0;
             });
     }
 

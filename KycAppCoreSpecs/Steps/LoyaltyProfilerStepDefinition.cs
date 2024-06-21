@@ -31,8 +31,7 @@ public sealed class LoyaltyProfilerStepDefinition
         _scenarioContext.TryGetValue<IEnumerable<CustomerActivityEventBase>>(
             ActivityeventsKey, 
             out var registeredEvents);
-        ActivityStreamProvider.SetStream(new ActivityStreamTestAdapter(registeredEvents));
-        var loyaltyProfile = new LoyaltyProfile();
+        var loyaltyProfile = new LoyaltyProfile(new ActivityStreamTestAdapter(registeredEvents));
         loyaltyProfile.GenerateProfile(1);
         _scenarioContext.Add(EvaluationResultKey, loyaltyProfile.Points);
     }
@@ -50,13 +49,13 @@ public sealed class LoyaltyProfilerStepDefinition
         _scenarioContext.Remove(ActivityeventsKey);
     }
     
-    private void RecordActivityEvent(SignUpActivityEvent signUpEvent)
+    private void RecordActivityEvent(CustomerActivityEventBase activityEvent)
     {
         if (!_scenarioContext.ContainsKey(ActivityeventsKey))
         {
             _scenarioContext.Add(ActivityeventsKey, new List<CustomerActivityEventBase>());
         }
         var activityEvents = _scenarioContext.Get<IList<CustomerActivityEventBase>>(ActivityeventsKey);
-        activityEvents.Add(signUpEvent);
+        activityEvents.Add(activityEvent);
     }
 }
