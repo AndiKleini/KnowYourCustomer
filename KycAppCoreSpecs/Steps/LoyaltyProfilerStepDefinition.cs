@@ -1,6 +1,8 @@
 using FluentAssertions;
+using KycAppCore;
 using KycAppCore.Events;
 using KycAppCore.OutPorts;
+using KycAppCoreSpecs.TestAdapters;
 using NUnit.Framework;
 
 namespace KycAppCoreSpecs.Steps;
@@ -26,16 +28,26 @@ public sealed class LoyaltyProfilerStepDefinition
     [When(@"the loyalty profile is evaluated")]
     public void WhenTheLoyaltyProfileIsEvaluated()
     {
-        // TODO create mock adapter
-        // ActivityStreamProvider.SetStream();
-        _scenarioContext.Add(EvaluationResultKey, 0);
+        _scenarioContext.TryGetValue<IEnumerable<CustomerActivityEventBase>>(
+            ActivityeventsKey, 
+            out var registeredEvents);
+        ActivityStreamProvider.SetStream(new ActivityStreamTestAdapter(registeredEvents));
+        var loyaltyProfile = new LoyaltyProfile();
+        loyaltyProfile.GenerateProfile(1);
+        _scenarioContext.Add(EvaluationResultKey, loyaltyProfile.Points);
     }
     
     [Then("the value for the loyalty points is (.*)")]
     public void WhenTheLoyaltyProfileIsEvaluated(int expectedLoyaltyPoint)
     {
-        _scenarioContext.TryGetValue<int>(out var result);
+        _scenarioContext.TryGetValue<int>(EvaluationResultKey, out var result);
         result.Should().Be(expectedLoyaltyPoint);
+    }
+
+    [AfterScenario("Unregister activity events")]
+    public void UnregisterActivityEvents()
+    {
+        _scenarioContext.Remove(ActivityeventsKey);
     }
     
     private void RecordActivityEvent(SignUpActivityEvent signUpEvent)

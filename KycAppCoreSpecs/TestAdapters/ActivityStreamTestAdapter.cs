@@ -1,19 +1,14 @@
+using System.Reactive.Linq;
 using KycAppCore.Events;
 using KycAppCore.OutPorts;
+using System.Reactive.Subjects;
 
 namespace KycAppCoreSpecs.TestAdapters;
 
-public class ActivityStreamTestAdapter : ICustomerActivityStream
+public class ActivityStreamTestAdapter(IEnumerable<CustomerActivityEventBase> activityEvents) : ICustomerActivityStream
 {
-    private readonly IEnumerable<CustomerActivityEventBase> activityEvents;
-
-    public ActivityStreamTestAdapter(IEnumerable<CustomerActivityEventBase> events)
-    {
-        this.activityEvents = events;
-    }
-    
     public IObservable<CustomerActivityEventBase> Consume(int customerId)
-    {
-        throw new NotImplementedException();
+    { 
+        return activityEvents.ToObservable();
     }
 }
