@@ -41,5 +41,6 @@ Further ideas:
 We could get a trend for the profile (up, neutral, down)
 Activity Graph ashowing whether the activity of a customer in-, decreases or remains constant
 We could use an inversion of control container here
+The ActivityStoreTestAdapter could provide an operation for registering events
     
 

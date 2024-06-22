@@ -1,20 +1,17 @@
-﻿using System.Reactive.Linq;
-using KycAppCore.Events;
+﻿using KycAppCore.Events;
 using KycAppCore.OutPorts;
 
 namespace KycAppCore;
 
-public class LoyaltyProfile(ICustomerActivityStream activityStream)
+public class LoyaltyProfile(ICustomerActivityStore activityStore)
 {
+    private const int POINTS_FOR_SIGNUP_LONGTIME_AGO = 5;
+
     public void GenerateProfile(int customerId)
     {
-        activityStream.Consume(customerId).
-            OfType<SignUpActivityEvent>().
-            Cast<SignUpActivityEvent>().
-            Subscribe(s =>
-            {
-                this.Points = s.ActivityTimeStamp <= DateTime.Now.AddYears(-1) ? 5 : 0;
-            });
+        var signUpDate = activityStore.Consume(customerId).OfType<SignUpActivityEvent>()
+            .First().ActivityTimeStamp;
+        this.Points = signUpDate <= DateTime.Now.AddYears(-1) ? POINTS_FOR_SIGNUP_LONGTIME_AGO : 0;
     }
 
     public int Points { get; private set; }

@@ -31,7 +31,7 @@ public sealed class LoyaltyProfilerStepDefinition
         _scenarioContext.TryGetValue<IEnumerable<CustomerActivityEventBase>>(
             ActivityeventsKey, 
             out var registeredEvents);
-        var loyaltyProfile = new LoyaltyProfile(new ActivityStreamTestAdapter(registeredEvents));
+        var loyaltyProfile = new LoyaltyProfile(new ActivityStoreTestAdapter(registeredEvents));
         loyaltyProfile.GenerateProfile(1);
         _scenarioContext.Add(EvaluationResultKey, loyaltyProfile.Points);
     }
