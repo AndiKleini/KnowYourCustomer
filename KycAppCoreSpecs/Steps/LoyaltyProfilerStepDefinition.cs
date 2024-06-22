@@ -1,9 +1,7 @@
 using FluentAssertions;
 using KycAppCore;
 using KycAppCore.Events;
-using KycAppCore.OutPorts;
 using KycAppCoreSpecs.TestAdapters;
-using NUnit.Framework;
 
 namespace KycAppCoreSpecs.Steps;
 
