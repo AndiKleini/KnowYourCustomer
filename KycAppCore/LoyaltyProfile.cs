@@ -10,7 +10,7 @@ public class LoyaltyProfile(ICustomerActivityStore activityStore)
     public void GenerateProfile(int customerId)
     {
         var signUpDate = activityStore.Consume(customerId).OfType<SignUpActivityEvent>()
-            .First().ActivityTimeStamp;
+            .First(s => s.CustomerId == customerId).ActivityTimeStamp;
         this.Points = signUpDate <= DateTime.Now.AddYears(-1) ? POINTS_FOR_SIGNUP_LONGTIME_AGO : 0;
     }
 
