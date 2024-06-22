@@ -3,10 +3,17 @@ using KycAppCore.OutPorts;
 
 namespace KycAppCoreSpecs.TestAdapters;
 
-public class ActivityStoreTestAdapter(IEnumerable<CustomerActivityEventBase> activityEvents) : ICustomerActivityStore
+public class ActivityStoreTestAdapter : ICustomerActivityStore
 {
+    private readonly List<CustomerActivityEventBase> activityEvents = new();
+
     public IEnumerable<CustomerActivityEventBase> Consume(int customerId)
     {
         return activityEvents;
+    }
+
+    public void Register(CustomerActivityEventBase activityEvent)
+    {
+        this.activityEvents.Add(activityEvent);
     }
 }

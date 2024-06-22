@@ -8,54 +8,38 @@ using NUnit.Framework;
 namespace KycAppCoreSpecs.Steps;
 
 [Binding]
-public sealed class LoyaltyProfilerStepDefinition
+public sealed class LoyaltyProfilerStepDefinition(ScenarioContext scenarioContext)
 {
     private const string EvaluationResultKey = "EvaluationResultKey";
-    private const string ActivityeventsKey = "ActivityEvents";
-    private readonly ScenarioContext _scenarioContext;
+    private const string ActivityStoreTestAdapterKey = "ActivityStoreTestAdapterKey";
 
-    public LoyaltyProfilerStepDefinition(ScenarioContext scenarioContext)
-    {
-        _scenarioContext = scenarioContext;
-    }
-    
     [Given("the customer signed up (.*) days ago")]
     public void TheCustomerSignedUpDaysAgo(int daysSinceSignUp)
     {
-        this.RecordActivityEvent(new SignUpActivityEvent(1, DateTime.Now.AddDays(-daysSinceSignUp)));
+        var activityStoreTestAdapter = new ActivityStoreTestAdapter();
+        activityStoreTestAdapter.Register(new SignUpActivityEvent(1, DateTime.Now.AddDays(-daysSinceSignUp)));
+        scenarioContext.Add(ActivityStoreTestAdapterKey, activityStoreTestAdapter);
     }
 
     [When(@"the loyalty profile is evaluated")]
     public void WhenTheLoyaltyProfileIsEvaluated()
     {
-        _scenarioContext.TryGetValue<IEnumerable<CustomerActivityEventBase>>(
-            ActivityeventsKey, 
-            out var registeredEvents);
-        var loyaltyProfile = new LoyaltyProfile(new ActivityStoreTestAdapter(registeredEvents));
+        var loyaltyProfile = new LoyaltyProfile(
+            scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey));
         loyaltyProfile.GenerateProfile(1);
-        _scenarioContext.Add(EvaluationResultKey, loyaltyProfile.Points);
+        scenarioContext.Add(EvaluationResultKey, loyaltyProfile.Points);
     }
     
     [Then("the value for the loyalty points is (.*)")]
     public void WhenTheLoyaltyProfileIsEvaluated(int expectedLoyaltyPoint)
     {
-        _scenarioContext.TryGetValue<int>(EvaluationResultKey, out var result);
+        scenarioContext.TryGetValue<int>(EvaluationResultKey, out var result);
         result.Should().Be(expectedLoyaltyPoint);
     }
 
     [AfterScenario("Unregister activity events")]
     public void UnregisterActivityEvents()
     {
-        _scenarioContext.Remove(ActivityeventsKey);
-    }
-    
-    private void RecordActivityEvent(CustomerActivityEventBase activityEvent)
-    {
-        if (!_scenarioContext.ContainsKey(ActivityeventsKey))
-        {
-            _scenarioContext.Add(ActivityeventsKey, new List<CustomerActivityEventBase>());
-        }
-        var activityEvents = _scenarioContext.Get<IList<CustomerActivityEventBase>>(ActivityeventsKey);
-        activityEvents.Add(activityEvent);
+        scenarioContext.Remove(ActivityStoreTestAdapterKey);
     }
 }
