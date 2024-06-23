@@ -55,5 +55,6 @@ Sessionplan:
     
 Takeaways:
     *) USe single assertions in spceflow as it is better understanding for business and living documentation
+    * Code coverage should be higher in hexagonal architecture
     
 

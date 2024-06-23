@@ -8,7 +8,6 @@ namespace KycAppCoreSpecs.Steps;
 [Binding]
 public sealed class LoyaltyProfilerStepDefinition(ScenarioContext scenarioContext)
 {
-    private const string EvaluationResultKey = "EvaluationResultKey";
     private const string ActivityStoreTestAdapterKey = "ActivityStoreTestAdapterKey";
     private const string LoyaltyProfileUnderTestKey = "LoyaltyProfileUnderTestKey";
 
@@ -33,15 +32,14 @@ public sealed class LoyaltyProfilerStepDefinition(ScenarioContext scenarioContex
         var loyaltyProfile = new LoyaltyProfile(
             scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey));
         loyaltyProfile.GenerateProfile(1);
-        scenarioContext.Add(EvaluationResultKey, loyaltyProfile.Points);
         scenarioContext.Add(LoyaltyProfileUnderTestKey, loyaltyProfile);
     }
     
     [Then("the value for the loyalty points is (.*)")]
     public void ThenTheValueForTheLoyaltyPointsIs(int expectedLoyaltyPoint)
     {
-        scenarioContext.TryGetValue<int>(EvaluationResultKey, out var result);
-        result.Should().Be(expectedLoyaltyPoint);
+        var loyaltyProfile = scenarioContext.Get<LoyaltyProfile>(LoyaltyProfileUnderTestKey);
+        loyaltyProfile.Points.Should().Be(expectedLoyaltyPoint);
     }
 
     [Then("the loyalty profile emits error (.*)")]
