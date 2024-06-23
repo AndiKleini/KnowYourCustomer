@@ -26,3 +26,9 @@ Scenario: Layoality Profile evaluates to five when registration happended exactl
 	Given the customer signed up 366 days ago
 	When the loyalty profile is evaluated
 	Then the value for the loyalty points is 5
+
+@mytag
+Scenario: Layoality Profile evaluates to error when no signup event exists
+	Given the customer did never sign up
+	When the loyalty profile is evaluated
+	Then the loyalty profile emits error 1

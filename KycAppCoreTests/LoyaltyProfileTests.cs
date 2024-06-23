@@ -9,12 +9,12 @@ namespace KycAppCoreTests;
 public class LoyaltyProfileTests
 {
     [Test]
-    public void GenerateProfile_MultipleSignUpEventsFromDifferentCustomersInStream_PicksSignUpEventFromSpecifiedCustomer()
+    public void GenerateProfile_MultipleSignUpEventsFromDifferentCustomersRetrieved_PickSignUpEventFromSpecifiedCustomer()
     {
         int customerSignedUpMoreThan365DaysAgo = 1;
         int customerSignedUpYesterday = 2;
         var activityStoreMock = new Moq.Mock<ICustomerActivityStore>();
-        activityStoreMock.Setup(s => s.Consume(customerSignedUpMoreThan365DaysAgo)).Returns(
+        activityStoreMock.Setup(s => s.GetEventsFor(customerSignedUpMoreThan365DaysAgo)).Returns(
             new List<CustomerActivityEventBase>() 
             {
                 new SignUpActivityEvent(customerSignedUpYesterday, DateTime.Now.AddDays(-1)),
@@ -25,5 +25,19 @@ public class LoyaltyProfileTests
         instanceUnderTest.GenerateProfile(customerSignedUpMoreThan365DaysAgo);
 
         instanceUnderTest.Points.Should().Be(5);
+    }
+    
+    [Test]
+    public void GenerateProfile_NoSignUpEventRetrieved_SwitchToErrorState()
+    {
+        int customerId = 1;
+        var activityStoreMock = new Moq.Mock<ICustomerActivityStore>();
+        activityStoreMock.Setup(s => s.GetEventsFor(customerId)).Returns([]);
+        var instanceUnderTest = new LoyaltyProfile(activityStoreMock.Object);
+
+        instanceUnderTest.GenerateProfile(customerId);
+
+        instanceUnderTest.Points.Should().Be(0);
+        instanceUnderTest.Error.Should().Be(ErrorCodes.UnknownCustomer);
     }
 }

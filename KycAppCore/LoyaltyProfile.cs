@@ -9,10 +9,18 @@ public class LoyaltyProfile(ICustomerActivityStore activityStore)
 
     public void GenerateProfile(int customerId)
     {
-        var signUpDate = activityStore.Consume(customerId).OfType<SignUpActivityEvent>()
-            .First(s => s.CustomerId == customerId).ActivityTimeStamp;
-        this.Points = signUpDate <= DateTime.Now.AddYears(-1) ? POINTS_FOR_SIGNUP_LONGTIME_AGO : 0;
+        DateTime? signUpDate = activityStore.GetEventsFor(customerId).OfType<SignUpActivityEvent>()
+            .FirstOrDefault(s => s.CustomerId == customerId)?.ActivityTimeStamp;
+        if (signUpDate == null)
+        {
+            this.Error = ErrorCodes.UnknownCustomer;
+        }
+        else
+        {
+            this.Points = signUpDate <= DateTime.Now.AddYears(-1) ? POINTS_FOR_SIGNUP_LONGTIME_AGO : 0;
+        }
     }
 
     public int Points { get; private set; }
+    public ErrorCodes Error { get; private set; }
 }

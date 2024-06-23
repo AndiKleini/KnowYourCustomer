@@ -7,7 +7,7 @@ public class ActivityStoreTestAdapter : ICustomerActivityStore
 {
     private readonly List<CustomerActivityEventBase> activityEvents = new();
 
-    public IEnumerable<CustomerActivityEventBase> Consume(int customerId)
+    public IEnumerable<CustomerActivityEventBase> GetEventsFor(int customerId)
     {
         return activityEvents;
     }

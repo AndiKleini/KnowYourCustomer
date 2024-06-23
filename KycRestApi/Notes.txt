@@ -39,13 +39,21 @@ The point allow a ranking to give a bonus to the 100 most loyal customers
 
 Further ideas:
 We could get a trend for the profile (up, neutral, down)
-Activity Graph ashowing whether the activity of a customer in-, decreases or remains constant
+Activity Graph showing whether the activity of a customer in-, decreases or remains constant
 We could use an inversion of control container here
 The ActivityStoreTestAdapter could provide an operation for registering events
+Make a summary slide with takeaways
+
 
 TODOS:
 Configure Rider Coding Convention Properly
 Make Method Consume async in ICustomerActivityStore
 Set Tags to specs (at the moment it defaults to @myTag) 
+
+Sessionplan:
+    *) Implement UnkownUser as first fix 
+    
+Takeaways:
+    *) USe single assertions in spceflow as it is better understanding for business and living documentation
     
 
