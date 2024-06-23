@@ -19,6 +19,13 @@ public class LoyaltyProfile(ICustomerActivityStore activityStore)
         {
             this.Points = signUpDate <= DateTime.Now.AddYears(-1) ? POINTS_FOR_SIGNUP_LONGTIME_AGO : 0;
         }
+
+        var spentWithinTheLast30Days = activityStore.GetEventsFor(customerId).
+            OfType<PurchaseEvent>().
+            Where(s => s.ActivityTimeStamp >= DateTime.Now.AddDays(-30)).
+            Sum(s => s.Amount);
+
+        this.Points += spentWithinTheLast30Days * 2 / 100;
     }
 
     public int Points { get; private set; }

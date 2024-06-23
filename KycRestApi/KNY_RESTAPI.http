@@ -1,6 +1,0 @@
-@KNY_RESTAPI_HostAddress = http://localhost:5068
-
-GET {{KNY_RESTAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

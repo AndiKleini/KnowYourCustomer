@@ -30,11 +30,8 @@ Determine Customer's Loyalty Points (maybe we call it Loyalty Profile):
 The point allow a ranking to give a bonus to the 100 most loyal customers
     Rules
         *) Registration since one year mandatory (otherwise we set the loyalty to 0)
-        *) Verification of mobile successful (for bonus promotion) mandatory (otherwise set the loayality to 0)
-        *) Last identification not older than 2 years +5 (formula depending on the years e.g.: years*5)
         *) Sum of purchases higher than 100 € +10 (formula depending on the amount e.g.: amount/10)
         *) At least one purchase higher than 10€ in the last month +5
-        *) No Fraud Suspections
           
 
 Further ideas:
@@ -43,18 +40,29 @@ Activity Graph showing whether the activity of a customer in-, decreases or rema
 We could use an inversion of control container here
 The ActivityStoreTestAdapter could provide an operation for registering events
 Make a summary slide with takeaways
+Contactability as new domain object.
 
 
 TODOS:
 Configure Rider Coding Convention Properly
 Make Method Consume async in ICustomerActivityStore
 Set Tags to specs (at the moment it defaults to @myTag) 
+Stored customerId in scenrio->contextStepDefinitions
+Cleanup DateTime.Now.Add(.1) with Yesterday
 
 Sessionplan:
+    1.) Introduction
+    2.) Implement LoyaltyProfile function for calculating price out of purchase amount
+        - the specflow binding will be commented out
+        - maybe we also create the Purchase record on demand by the IDE (at the moment not very well supported)
+        - 
+    3.) Fix edge case with unit test 
     *) Implement UnkownUser as first fix 
     
 Takeaways:
     *) USe single assertions in spceflow as it is better understanding for business and living documentation
-    * Code coverage should be higher in hexagonal architecture
+    *) Code coverage should be higher in hexagonal architecture
+    *) Make specflow very readable so that testers can create step definitions.
+    *) The hexagonal architecture makes onboarding very difficult 
     
 
