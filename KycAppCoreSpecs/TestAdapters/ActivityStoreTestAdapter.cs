@@ -7,9 +7,9 @@ public class ActivityStoreTestAdapter : ICustomerActivityStore
 {
     private readonly List<CustomerActivityEventBase> activityEvents = new();
 
-    public IEnumerable<CustomerActivityEventBase> GetEventsFor(int customerId)
+    public async Task<IEnumerable<CustomerActivityEventBase>> GetEventsFor(int customerId)
     {
-        return activityEvents;
+        return await Task.FromResult(activityEvents);
     }
 
     public void Register(CustomerActivityEventBase activityEvent)

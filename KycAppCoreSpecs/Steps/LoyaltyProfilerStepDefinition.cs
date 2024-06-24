@@ -39,11 +39,11 @@ namespace KycAppCoreSpecs.Steps
         }
         
         [When(@"the loyalty profile is evaluated")]
-        public void WhenTheLoyaltyProfileIsEvaluated()
+        public async Task  WhenTheLoyaltyProfileIsEvaluated()
         {
             var loyaltyProfile = new LoyaltyProfile(
                 scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey));
-            loyaltyProfile.GenerateProfile(1);
+            await loyaltyProfile.GenerateProfile(1);
             scenarioContext.Add(LoyaltyProfileUnderTestKey, loyaltyProfile);
         }
     

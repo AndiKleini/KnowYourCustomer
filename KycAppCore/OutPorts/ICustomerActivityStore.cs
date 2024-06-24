@@ -4,5 +4,5 @@ namespace KycAppCore.OutPorts;
 
 public interface ICustomerActivityStore
 {
-    public IEnumerable<CustomerActivityEventBase> GetEventsFor(int customerId);
+    public Task<IEnumerable<CustomerActivityEventBase>> GetEventsFor(int customerId);
 }
