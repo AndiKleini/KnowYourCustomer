@@ -37,3 +37,4 @@ Scenario: Layoality Profile points are evaluating to 5 + X * 2 when registration
 Examples:
 | DaysPassedSinceSignUp | MoneySpent | FromDaysAgo | ToDaysAgo | ExpectedLoyaltyPoints |
 | 500                   | 5000       | 30          | 0         | 105                   |
+| 400                   | 5055       | 10          | 0         | 106                   |

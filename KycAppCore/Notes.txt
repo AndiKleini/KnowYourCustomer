@@ -52,14 +52,26 @@ Cleanup DateTime.Now.Add(.1) with Yesterday
 
 Sessionplan:
     1.) Introduction
+    2.) Show a user story for the feature
     2.) Implement LoyaltyProfile function for calculating price out of purchase amount by creating a new scenario
         - the specflow binding will be commented out -> first step is comment it in 
         - maybe we also create the Purchase record on demand by the IDE (at the moment not very well supported
                 solution found: Create record in test and then -> move record to other project)
         - Let the tests run and fail because of missing implementation
-    4.) Implement the solution (do the minimum that is required to get the test green) 
-    3.) Fix additional edge cases, caused by infrastructure problems, with unit tests 
-    *) Implement UnkownUser as first fix 
+    3.) Implement the solution (do the minimum that is required to get the test green) 
+    4.) Fix additional edge cases, caused by infrastructure problems, with unit tests 
+    5.) Raise problem with multiple purchases suming up to the required amount (maybe cancellations as well)
+        (You don't want to have this in living documentation -> go better with a unit test)
+    *) Implement UnkownUser as first fix
+    
+Slides 
+    Title
+    Introduction of speaker
+    Introduction of the domain
+    Introduction of the architecture by example
+    And we start
+    
+    
     
 Takeaways:
     *) USe single assertions in spceflow as it is better understanding for business and living documentation
