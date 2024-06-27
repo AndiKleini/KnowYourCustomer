@@ -54,6 +54,8 @@ Let the tests run and show that the new one is red.
 6.) Create Unit Test for the summation of events and implement refund event
     or maybe we implement dedicated IEnumarable extension method for summing up with more 
     restrictions -> we will write this only as additional information in the spec 
+    fraud case when customer buys a lot of small things instead of a big one
+    we can only count the max amount per day
 
 ```csharp
 public static int SumUpPoints(this IEnumerable<PurchaseEvent> events)
