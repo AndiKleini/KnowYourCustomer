@@ -1,0 +1,60 @@
+1.) Creating the new spec
+    Creating method: in LoyaltyProfileStepDefintions.cs
+            [Given("the customer spent more than (.*) between (.*) and (.*) days ago")]
+            public void TheCustomerSpentMoreThanMoneySpentBetweenFromDaysAgoAndToDaysAgo(
+                int moneySpent,
+                int fromDays,
+                int toDaysAgo)
+            {
+                var activityTestAdapter = 
+                    scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey);
+                activityTestAdapter.Register(
+                    new PurchaseEvent(1, DateTime.Now.AddDays(toDaysAgo - 1), moneySpent));
+            }
+            Create the purchase event on demand by means of IDE
+            Implement the behaviour in the LoyaltyProfile (Don't refactor here)
+            Let tests run to gree
+            Cleanup Code 
+            Run tests again   
+2.) Adding new tests by specifying new examples
+    | DaysPassedSinceSignUp | MoneySpent | FromDaysAgo | ToDaysAgo | ExpectedLoyaltyPoints |
+    | 500                   | 5000       | 30          | 0         | 105                   |
+    | 400                   | 2000       | 40          | 35        | 5                     |  
+    | 400                   | 1000       | 20          | 0         | 25                    |
+3.) Writing unit tests for edge cases that shouldn't be shown to business
+    No sign up event supllied -> unkown customer
+4.) Refactor the solution to a more efficient one (read from store only once)
+      public async Task GenerateProfile(int customerId)
+         {
+             var result = 
+                 (await activityStore.GetEventsFor(customerId)).Aggregate<
+                     CustomerActivityEventBase,
+                     (int Points, ErrorCodes Error)>(
+                     new (0, ErrorCodes.UnknownCustomer), (b, c) =>
+                     {
+                         return c switch
+                         {
+                             PurchaseEvent pe =>
+                                 new (
+                                     b.Points + (pe.ActivityTimeStamp.Date >= DateTime.Now.AddDays(-30).Date
+                                         ? 2 * pe.Amount / 100
+                                         : 0),
+                                     b.Error
+                                 ),
+                             SignUpActivityEvent se =>
+                                 new (
+                                     b.Points + (se.ActivityTimeStamp <= DateTime.Now.AddYears(-1)
+                                         ? POINTS_FOR_SIGNUP_LONGTIME_AGO
+                                         : 0),
+                                     ErrorCodes.NoError
+                                 ),
+                             { } u => b
+                         };
+                     });
+             this.Points = result.Points;
+             this.Error = result.Error;
+             return;
+        }
+5.) Extract function SumUpPoints
+6.) Create unit test for SumUpPoints (considering the PurchaseByInstallmentEvent).
+    

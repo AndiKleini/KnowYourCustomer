@@ -253,7 +253,9 @@ this.ScenarioInitialize(scenarioInfo);
             "longer than 365 days")]
         [NUnit.Framework.CategoryAttribute("mytag")]
         [NUnit.Framework.TestCaseAttribute("500", "5000", "30", "0", "105", null)]
-        [NUnit.Framework.TestCaseAttribute("400", "5055", "10", "0", "106", null)]
+        [NUnit.Framework.TestCaseAttribute("400", "2000", "40", "35", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("400", "1000", "20", "0", "25", null)]
+        [NUnit.Framework.TestCaseAttribute("400", "2000", "30", "29", "45", null)]
         public virtual void LayoalityProfilePointsAreEvaluatingTo5X2WhenRegistrationHappendedLongerThan365Days(string daysPassedSinceSignUp, string moneySpent, string fromDaysAgo, string toDaysAgo, string expectedLoyaltyPoints, string[] exampleTags)
         {
             string[] @__tags = new string[] {

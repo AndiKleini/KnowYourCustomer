@@ -22,12 +22,12 @@ public class LoyaltyProfile(ICustomerActivityStore activityStore)
 
         var spentWithinTheLast30Days = (await activityStore.GetEventsFor(customerId)).
             OfType<PurchaseEvent>().
-            Where(s => s.ActivityTimeStamp >= DateTime.Now.AddDays(-30)).
+            Where(s => s.ActivityTimeStamp.Date >= DateTime.Now.AddDays(-30).Date).
             SumUpPoints();
 
         this.Points += spentWithinTheLast30Days * 2 / 100;
     }
-
+    
     public int Points { get; private set; }
     public ErrorCodes Error { get; private set; }
 }

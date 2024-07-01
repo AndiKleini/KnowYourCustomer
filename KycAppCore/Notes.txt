@@ -80,3 +80,5 @@ Takeaways:
     *) The hexagonal architecture makes onboarding very difficult 
     
 
+    
+

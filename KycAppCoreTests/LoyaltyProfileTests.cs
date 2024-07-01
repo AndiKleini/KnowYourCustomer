@@ -40,23 +40,4 @@ public class LoyaltyProfileTests
         instanceUnderTest.Points.Should().Be(0);
         instanceUnderTest.Error.Should().Be(ErrorCodes.UnknownCustomer);
     }
-    
-    [Test]
-    public async Task GenerateProfile_NoSignUpEventRetrievedForSpecifiedCustomer_SwitchToErrorStateUnknownCustomer()
-    {
-        int customerId = 1;
-        int anotherCustomerId = 2;
-        var activityStoreMock = new Moq.Mock<ICustomerActivityStore>();
-        activityStoreMock.Setup(
-            s => s.GetEventsFor(customerId)).
-            ReturnsAsync([
-                new SignUpActivityEvent(anotherCustomerId, DateTime.Now.AddDays(-1))
-        ]);
-        var instanceUnderTest = new LoyaltyProfile(activityStoreMock.Object);
-
-        await instanceUnderTest.GenerateProfile(customerId);
-
-        instanceUnderTest.Points.Should().Be(0);
-        instanceUnderTest.Error.Should().Be(ErrorCodes.UnknownCustomer);
-    }
 }

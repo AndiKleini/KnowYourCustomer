@@ -26,7 +26,7 @@ namespace KycAppCoreSpecs.Steps
             var noActivityEventsAreEmitted = new ActivityStoreTestAdapter();
             scenarioContext.Add(ActivityStoreTestAdapterKey, noActivityEventsAreEmitted);
         }
-
+/*
         [Given("the customer spent more than (.*) between (.*) and (.*) days ago")]
         public void TheCustomerSpentMoreThanMoneySpentBetweenFromDaysAgoAndToDaysAgo(
             int moneySpent,
@@ -36,6 +36,19 @@ namespace KycAppCoreSpecs.Steps
             var activityStoreTestAdapter = scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey);
             activityStoreTestAdapter.Register(
                 new PurchaseEvent(1, DateTime.Now.AddDays(toDaysAgo - 1), moneySpent));
+        }
+        */
+
+        [Given("the customer spent more than (.*) between (.*) and (.*) days ago")]
+        public void TheCustomerSpentMoreThanMoneySpentBetweenFromDaysAgoAndToDaysAgo(
+            int moneySpent,
+            int fromDays,
+            int toDaysAgo)
+        {
+            var activityTestAdapter = 
+                scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey);
+            activityTestAdapter.Register(
+                new PurchaseEvent(1, DateTime.Now.AddDays(-toDaysAgo - 1), moneySpent ));
         }
         
         [When(@"the loyalty profile is evaluated")]
