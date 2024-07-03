@@ -13,7 +13,7 @@
             }
             Create the purchase event on demand by means of IDE
             Implement the behaviour in the LoyaltyProfile (Don't refactor here)
-            Let tests run to gree
+            Let tests run to green
             Cleanup Code 
             Run tests again   
 2.) Adding new tests by specifying new examples
@@ -57,4 +57,5 @@
         }
 5.) Extract function SumUpPoints
 6.) Create unit test for SumUpPoints (considering the PurchaseByInstallmentEvent).
+
     

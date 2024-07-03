@@ -49,6 +49,7 @@ Make Method Consume async in ICustomerActivityStore
 Set Tags to specs (at the moment it defaults to @myTag) 
 Stored customerId in scenrio->contextStepDefinitions
 Cleanup DateTime.Now.Add(.1) with Yesterday
+Input validation in Specflow (regex for inter parameter)
 
 Sessionplan:
     1.) Introduction
@@ -70,8 +71,13 @@ Slides
     Introduction of the domain
     Introduction of the architecture by example
     And we start
-    
-    
+
+Introduction 15 minutes
+
+30 Minutes coding
+
+5 minutes takeaways
+10 minutes QA    
     
 Takeaways:
     *) USe single assertions in spceflow as it is better understanding for business and living documentation
