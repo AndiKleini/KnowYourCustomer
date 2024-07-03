@@ -77,15 +77,13 @@ namespace KycAppCoreSpecs.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile evaluates to zero when registration happended within the last 3" +
             "65 days")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void LayoalityProfileEvaluatesToZeroWhenRegistrationHappendedWithinTheLast365Days()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile evaluates to zero when registration happended within the last 3" +
                     "65 days", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -105,13 +103,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
+#line 7
  testRunner.Given("the customer signed up 1 days ago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 8
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 10
+#line 9
  testRunner.Then("the value for the loyalty points is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -121,15 +119,13 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile evaluates to zero when registration happended exactly 365 days " +
             "ago")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void LayoalityProfileEvaluatesToZeroWhenRegistrationHappendedExactly365DaysAgo()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile evaluates to zero when registration happended exactly 365 days " +
                     "ago", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -149,13 +145,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 12
  testRunner.Given("the customer signed up 365 days ago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 13
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 14
  testRunner.Then("the value for the loyalty points is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -165,15 +161,13 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile evaluates to five when registration happended exactly 366 days " +
             "ago")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void LayoalityProfileEvaluatesToFiveWhenRegistrationHappendedExactly366DaysAgo()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile evaluates to five when registration happended exactly 366 days " +
                     "ago", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 19
+#line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -193,13 +187,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 20
+#line 17
  testRunner.Given("the customer signed up 366 days ago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 21
+#line 18
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 19
  testRunner.Then("the value for the loyalty points is 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -208,14 +202,12 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile evaluates to error when no signup event exists")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void LayoalityProfileEvaluatesToErrorWhenNoSignupEventExists()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile evaluates to error when no signup event exists", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 25
+#line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -235,13 +227,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 26
+#line 22
  testRunner.Given("the customer did never sign up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 27
+#line 23
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 24
  testRunner.Then("the loyalty profile emits error 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -251,15 +243,12 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile points are evaluating to 5 + X * 2 when registration happended " +
             "longer than 365 days")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        [NUnit.Framework.TestCaseAttribute("500", "5000", "30", "0", "105", null)]
-        [NUnit.Framework.TestCaseAttribute("400", "2000", "40", "35", "5", null)]
-        [NUnit.Framework.TestCaseAttribute("400", "1000", "20", "0", "25", null)]
-        [NUnit.Framework.TestCaseAttribute("400", "2000", "30", "29", "45", null)]
-        public virtual void LayoalityProfilePointsAreEvaluatingTo5X2WhenRegistrationHappendedLongerThan365Days(string daysPassedSinceSignUp, string moneySpent, string fromDaysAgo, string toDaysAgo, string expectedLoyaltyPoints, string[] exampleTags)
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.TestCaseAttribute("500", "5000", "0", "105", null)]
+        public virtual void LayoalityProfilePointsAreEvaluatingTo5X2WhenRegistrationHappendedLongerThan365Days(string daysPassedSinceSignUp, string moneySpent, string daysAgo, string expectedLoyaltyPoints, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "mytag"};
+                    "ignore"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -268,12 +257,11 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("DaysPassedSinceSignUp", daysPassedSinceSignUp);
             argumentsOfScenario.Add("MoneySpent", moneySpent);
-            argumentsOfScenario.Add("FromDaysAgo", fromDaysAgo);
-            argumentsOfScenario.Add("ToDaysAgo", toDaysAgo);
+            argumentsOfScenario.Add("DaysAgo", daysAgo);
             argumentsOfScenario.Add("ExpectedLoyaltyPoints", expectedLoyaltyPoints);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile points are evaluating to 5 + X * 2 when registration happended " +
                     "longer than 365 days", "          and purchases in the hight of X were made within the last 30 days", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 31
+#line 27
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -293,16 +281,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 33
+#line 29
  testRunner.Given(string.Format("the customer signed up {0} days ago", daysPassedSinceSignUp), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 34
-    testRunner.And(string.Format("the customer spent more than {0} between {1} and {2} days ago", moneySpent, fromDaysAgo, toDaysAgo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 30
+    testRunner.And(string.Format("the customer spent more than {0} cash {1} days ago", moneySpent, daysAgo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 35
+#line 31
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 36
+#line 32
  testRunner.Then(string.Format("the value for the loyalty points is {0}", expectedLoyaltyPoints), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
