@@ -40,4 +40,30 @@ public class LoyaltyProfileTests
         instanceUnderTest.Points.Should().Be(0);
         instanceUnderTest.Error.Should().Be(ErrorCodes.UnknownCustomer);
     }
+
+    [Test]
+    public void GetLoyaltyAmountOfMoneySpent_PurchaseInInstallments_OnlyCommissionConsidered()
+    {
+        var customerId = 1;
+        var mockery = new Mock<ICustomerActivityStore>();
+        const int  amount = 5000;
+        const int commission = 100;
+        PurchaseEvent purchaseByInstallment = new PurchaseByInstallmentEvent(customerId, DateTime.Now.AddDays(-1), amount, commission);
+        mockery.Setup(s => s.GetEventsFor(customerId)).ReturnsAsync(
+            [
+                purchaseByInstallment
+            ]
+        );
+
+        int yieldPoints = LoyaltyProfile.GetLoyaltyAmountOfMoneySpent(purchaseByInstallment);
+
+        yieldPoints.Should().Be(2);
+    }
+    
+    [Test]
+    public void GetLoyaltyAmountOfMoneySpent_NUllPassedAsInputArgument_Throws()
+    {
+        Action act = () => LoyaltyProfile.GetLoyaltyAmountOfMoneySpent(null);
+        act.Should().Throw<ArgumentNullException>();
+    }
 }
