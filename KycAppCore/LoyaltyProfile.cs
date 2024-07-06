@@ -17,7 +17,7 @@ public class LoyaltyProfile(ICustomerActivityStore activityStore)
         }
         else
         {
-            this.Points = signUpDate <= DateTime.Now.AddYears(-1) ? PointsForSignupLongtimeAgo : 0;
+            this.Points += signUpDate <= DateTime.Now.AddYears(-1) ? PointsForSignupLongtimeAgo : 0;
         }
     }
     
