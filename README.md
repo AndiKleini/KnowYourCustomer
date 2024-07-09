@@ -10,16 +10,16 @@ Following feature is requested:
 
 Actually customers who are recently purchasing a lot should get better bonus promotions.
 
-For the first iteration the simple formula $P = P + 2M$ calculating the value of the promotion points should do the trick. P is the variable of the loyalty points and M is the overall amount the customer spent within the last 30 days.
+For the first iteration the simple formula $P = P + 2M$ calculating the value of the promotion points should do the trick. $P$ is the variable of the loyalty points and $M$ is the overall amount the customer spent within the last 30 days.
 
-Development, business and quality assuarance are discussion the feature and following scenario is created:
+Development, business and quality assuarance are discussing the feature and as am outcome following scenario is created:
 
-Scenario: Layoality Profile points are evaluating to 5 + X * 2 when registration 
-happended longer than 365 days and purchases in the hight of X were made within the last 30 days
-Given the customer signed up <DaysPassedSinceSignUp> days ago
-And the customer spent more than <MoneySpent> between <FromDaysAgo> and <ToDaysAgo> days ago
-When the loyalty profile is evaluated
-Then the value for the loyalty points is <ExpectedLoyaltyPoints>
+**Scenario:** 
+Layoality Profile points are evaluating to 5 + X * 2 when registration happended longer than 365 days and purchases in the hight of X were made within the last 30 days
+ > Given the customer signed up <DaysPassedSinceSignUp> days ago
+ > And the customer spent more than <MoneySpent> between <FromDaysAgo> and <ToDaysAgo> days ago
+ > When the loyalty profile is evaluated
+ > Then the value for the loyalty points is <ExpectedLoyaltyPoints>
 Examples:
 | DaysPassedSinceSignUp | MoneySpent | FromDaysAgo | ToDaysAgo | ExpectedLoyaltyPoints |
 | 500                   | 5000       | 30          | 0         | 105                   |
