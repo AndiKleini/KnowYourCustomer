@@ -2,20 +2,17 @@
 
 The solution is a training and experimental area for TDD. 
 
-## Scenario 1 Calculating loyalty points
+## Scenario 1 Extending the calculation of loyalty points
 
-Following feature is requested by Zsofia:
+Following feature is requested:
 
-As a marketing manager I want to make loyalty of purchasing customers visible,
-so that proper classifications for bonus promotions can be made.
+**As a marketing manager I want to make loyalty of purchasing customers visible, so that proper classifications for bonus promotions can be made.**
 
-Actually customers who are purchasing a lot should get better bonus promotions.
+Actually customers who are recently purchasing a lot should get better bonus promotions.
 
-For the first iteration the simple formula $P = P + 2M$ calculating the value of the 
-promotion points should do the trick. P is the variable of the loyalty points and 
-M is the overall amount the customer spent within the last 30 days.
+For the first iteration the simple formula $P = P + 2M$ calculating the value of the promotion points should do the trick. P is the variable of the loyalty points and M is the overall amount the customer spent within the last 30 days.
 
-Together with Zsofia we are creating proper specification
+Development, business and quality assuarance are discussion the feature and following scenario is created:
 
 Scenario: Layoality Profile points are evaluating to 5 + X * 2 when registration 
 happended longer than 365 days and purchases in the hight of X were made within the last 30 days
