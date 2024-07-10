@@ -103,6 +103,14 @@ by properly named methods (-> **_clean code_**).
             Sum(p => p.Amount * 2 / 100);
     }
 ```
-> **_Note:_** Let the tests run after each refactoring tasks in order to check whether something is broken or not.
+> **_Note:_** Let the tests run after each refactoring task in order to check whether something is broken or not.
+
+## Takeaways ##
+Let's summarize a few takeaways here.
+* **Stay in the test code as much/long you can !**\
+The test code is the first client code to your businesslogic ever and therefore it is a suitable place for design decisions regarding your APIs. During writing the tests you figure out what you really need and the risk of falling into the traps of speculative generality or YAGNI (You aint gonna need it) is lower. This approach may also have a huge impact on readability as well.\ Use
+means of your IDE for easily creating methods, types and properties on demand (e.g.: generate method), create type ...), so that you are not distracted from the test code.
+* **Switch between styles**\
+There are different approaches of unit testing out in the field like London (mocking, white box, inside-out) or Detroit (Classic, black box, outside-in). Take a closer look at the philosophies behind those but see them as frameworks or tools. In the real world, by knowing the advantages and disadvantages, you can make use of all of them. It depends on the situation which style is currently more suitable and don't hesitate using both as well.
 
 
