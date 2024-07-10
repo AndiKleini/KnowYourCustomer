@@ -111,11 +111,75 @@ by properly named methods (-> **_clean code_**).
 
 Now we have to handle an edge case. The system accepts payments by installment as well, which is not covered by the current implementation. Instead of paying the whole amount the customer pays initially a commission and afterwards step by step the rest.\
 From business point of view this corner case is not of any interest as with the already existing specs everything is clear. The money that was put on the table within the last 30 days has to be considered. Not more not less.\
-We could now enhance our specs so that the edge case is covered as well, but as business told us this is not relevant for them, we are better of going with a unit test. Otherwise we would take the risk that specs are not considered as a useful documentation for business anylonger.\
+We could now enhance our specs so that the edge case is covered as well, but as business told us this is not relevant for them, we are better off with covering this by a unit test. Otherwise we would blow up our specs with unnecessary, at least from business point of view, information.\
 
-1. Refactor a proper method for summation
-2. Create unit tests for the new method
-3. Implement the logic
+1. Refactor a proper method for extracting the amount from a purchase as this is the place we have to extend.
+```csharp
+ public async Task GenerateProfile(int customerId)
+    {
+        var customerActivityEventBases = 
+            (await activityStore.GetEventsFor(customerId)).ToList();
+        
+        DateTime? signUpDate = customerActivityEventBases.OfType<SignUpActivityEvent>()
+            .FirstOrDefault(s => s.CustomerId == customerId)?.ActivityTimeStamp;
+        if (signUpDate == null)
+        {
+            this.Error = ErrorCodes.UnknownCustomer;
+        }
+        else
+        {
+            this.Points += signUpDate <= OneYearAgo() ? PointsForSignupLongtimeAgo : 0;
+        }
+
+        this.Points +=
+            customerActivityEventBases.OfType<PurchaseEvent>()
+            .Where(p => p.ActivityTimeStamp.Date > ThirtyDaysAgo()).
+            Sum(p => GetPointsFrom(p));
+    }
+
+    internal static int GetPointsFrom(PurchaseEvent p)
+    {
+        return p.Amount * 2 / 100;
+    }
+```
+2. Create a unit test for the operation in [LoyaltyProfileTests](KycAppCoreTests/LoyaltyProfileTests.cs) .
+```csharp
+[Test]
+    public void GetPointsFrom_PurchaseByInstallment_ConsiderCommissionOnly()
+    {
+        var customerId = 1;
+        var amount = 10000;
+        var commission = 1000;
+        var expectedPointsFromCommission = commission * 2 / 100;
+
+        int yieldPoints = LoyaltyProfile.GetPointsFrom(
+            new PurchaseByInstallment(customerId, DateTime.Now.AddDays(-1), amount, commission)
+        );
+
+        yieldPoints.Should().Be(expectedPointsFromCommission);
+    }
+```
+> **_Note:_** Create the record *PurchaseByInstallment* under support of the IDE so that you don't need to leave the test method.
+
+> **_Note:_** Creating the record *PurchaseByInstallment* should be the last step in completing the test. Only if you are totally fine with the test you will create the new type.
+
+Run the tests and make sure that the new test turns red.
+
+4. Implement the logic in the method **GetPointsFrom** in the class [LoyaltyProfile](KycCoreApp/LoyaltyProfile.cs) .
+```csharp
+ internal static int GetPointsFrom(PurchaseEvent p)
+    {
+        var effectiveAmount =
+            p switch
+            {
+                PurchaseByInstallment pie => pie.Commission,
+                not null => p.Amount
+            };
+        return effectiveAmount * 2 / 100;
+    }
+```
+
+Run the tests and show that the new test turns green.
 
 ## Takeaways ##
 Let's summarize a few takeaways here.
