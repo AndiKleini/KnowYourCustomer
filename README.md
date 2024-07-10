@@ -114,5 +114,11 @@ means of your IDE for easily creating methods, types and properties on demand (e
 There are different approaches of unit testing out in the field like London (mocking, white box, inside-out) or Detroit (Classic, black box, outside-in). Take a closer look at the philosophies behind those but see them as frameworks or tools. In the real world, by knowing the advantages and disadvantages, you can make use of all of them. It depends on the situation which style is currently more suitable and don't hesitate using both as well.
 * **Talk the language of business**\
 By creating scenarios in Gherkin adapt to language of your business. If you are already following a DDD approach this is easier. If not, you should al least avoid technical phrases or terms in your specs so that business feels comfortable with it. You should only change the specs when the business is changing. If you have to refactor your Gherkin test cases because of some technical changes in the background although the business did not change, your specs are not suitable for business documentation.
+* **Tell me the problem not the solution**\
+Some stakeholders tend to suggest or even order concrete solutions. During a valuable 3 amigos discussion make sure that the problem is understood and work together on a proper solution. As documentation for such a session you can use concrete scenarios.
+* **Start with a failing test**\
+Each change in your business logic starts with a failing test. Sometimes it is tempting to add quickly features or fixing bugs without writing a failing test first. If the tests remain green after the change you haven't covered this feature at all. Someone could remove it without breaking the tests.
+* **Separate business logic from technical aspects**
+Make use of architectural patterns (e.g.: ports and adapters) realizing a clear separation between business logic and technical topics. TDD works best when the code under test is not depending directly from infrastructure (e.g.: db access via stored procedure, http requests, file access ...) so that you can focus on implementing the business logic.
 
 
