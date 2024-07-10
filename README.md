@@ -114,6 +114,8 @@ From business point of view this corner case is not of any interest as with the 
 We could now enhance our specs so that the edge case is covered as well, but as business told us this is not relevant for them, we are better of going with a unit test. Otherwise we would take the risk that specs are not considered as a useful documentation for business anylonger.\
 
 1. Refactor a proper method for summation
+2. Create unit tests for the new method
+3. Implement the logic
 
 ## Takeaways ##
 Let's summarize a few takeaways here.
