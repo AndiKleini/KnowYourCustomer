@@ -112,5 +112,7 @@ The test code is the first client code to your businesslogic ever and therefore 
 means of your IDE for easily creating methods, types and properties on demand (e.g.: generate method), create type ...), so that you are not distracted from the test code.
 * **Switch between styles**\
 There are different approaches of unit testing out in the field like London (mocking, white box, inside-out) or Detroit (Classic, black box, outside-in). Take a closer look at the philosophies behind those but see them as frameworks or tools. In the real world, by knowing the advantages and disadvantages, you can make use of all of them. It depends on the situation which style is currently more suitable and don't hesitate using both as well.
+* **Talk the language of business**\
+By creating scenarios in Gherkin adapt to language of your business. If you are already following a DDD approach this is easier. If not, you should al least avoid technical phrases or terms in your specs so that business feels comfortable with it. You should only change the specs when the business is changing. If you have to refactor your Gherkin test cases because of some technical changes in the background although the business did not change, your specs are not suitable for business documentation.
 
 
