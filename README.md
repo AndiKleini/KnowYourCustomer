@@ -45,7 +45,9 @@ public void TheCustomerSpentMoreThanMoneySpentBetweenFromDaysAgoAndToDaysAgo(
 
 Let the tests run and show that the recently added one is red while the others are green.
 
-4.) Implement the logic of the feature. For finding the code for the business logic (imagine you are a newbee in this repo and you see it for the first time) look at the defintion for the **then**-step. This shows that the method **GenerateProfile** in the class [LoyaltyProfile](KycCoreApp/LoyaltyProfile.cs) is invoked. Below you can see one solution for adding the feature.
+### *Step 2:* Add business logic
+
+1. Implement the logic of the feature. For finding the code for the business logic (imagine you are a newbee in this repo and you see it for the first time) look at the defintion for the **then**-step. This shows that the method **GenerateProfile** in the class [LoyaltyProfile](KycCoreApp/LoyaltyProfile.cs) is invoked. Below you can see one solution for adding the feature.
 ```csharp
 public async Task GenerateProfile(int customerId)
     {
@@ -71,7 +73,7 @@ public async Task GenerateProfile(int customerId)
 
 Let the tests run again and show that all are green.
 
-5.) Refactor the code in the method **GenerateProfile** by calling **GetEventsFor** on **activityStore** only once (-> **_performance_**). Additionally substitute the expressions
+2. Refactor the code in the method **GenerateProfile** by calling **GetEventsFor** on **activityStore** only once (-> **_performance_**). Additionally substitute the expressions
 ```csharp
 DateTime.Now.AddDays(-30) 
 ```
