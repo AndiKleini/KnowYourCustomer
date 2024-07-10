@@ -160,12 +160,10 @@ We could now enhance our specs so that the edge case is covered as well, but as 
     }
 ```
 > **_Note:_** Create the record *PurchaseByInstallment* under support of the IDE so that you don't need to leave the test method.
-
 > **_Note:_** Creating the record *PurchaseByInstallment* should be the last step in completing the test. Only if you are totally fine with the test you will create the new type.
-
 Run the tests and make sure that the new test turns red.
-
-4. Implement the logic in the method **GetPointsFrom** in the class [LoyaltyProfile](KycCoreApp/LoyaltyProfile.cs) .
+### *Step 4:* Add implementation logic for edge case
+1. Implement the logic in the method **GetPointsFrom** in the class [LoyaltyProfile](KycCoreApp/LoyaltyProfile.cs) .
 ```csharp
  internal static int GetPointsFrom(PurchaseEvent p)
     {
@@ -178,7 +176,6 @@ Run the tests and make sure that the new test turns red.
         return effectiveAmount * 2 / 100;
     }
 ```
-
 Run the tests and show that the new test turns green.
 
 ## Takeaways ##
