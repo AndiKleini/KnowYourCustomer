@@ -107,13 +107,13 @@ by properly named methods (-> **_clean code_**).
 ```
 > **_Note:_** Let the tests run after each refactoring task in order to check whether something is broken or not.
 
-### *Step 3:* Add a unnit test for an edge case
+### *Step 3:* Add a unit test for an edge case
 
 Now we have to handle an edge case. The system accepts payments by installment as well, which is not covered by the current implementation. Instead of paying the whole amount the customer pays initially a commission and afterwards step by step the rest.\
 From business point of view this corner case is not of any interest as with the already existing specs everything is clear. The money that was put on the table within the last 30 days has to be considered. Not more not less.\
 We could now enhance our specs so that the edge case is covered as well, but as business told us this is not relevant for them, we are better of going with a unit test. Otherwise we would take the risk that specs are not considered as a useful documentation for business anylonger.\
 
-1. Refactor 
+1. Refactor a proper method for summation
 
 ## Takeaways ##
 Let's summarize a few takeaways here.
