@@ -33,7 +33,22 @@ namespace KycAppCoreSpecs.Steps
             int moneySpent,
             int daysAgo)
         {
-             scenarioContext.Pending();
+            var testAdapter = scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey);
+            testAdapter.Register(new PurchaseEvent(CustomerUnderTestId, DateTime.Now.AddDays(-daysAgo), moneySpent));
+        }
+        
+        [GivenAttribute(@"the customer was part of a fraud suspicion (.*) days ago with id (.*)")]
+        public void GivenTheCustomerWasPartOfAFraudSuspicion(int daysAgo, int fraudSuspicionId)
+        {
+            var testAdapter = scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey);
+            testAdapter.Register(new FraudSuspicionEvent(CustomerUnderTestId, DateTime.Now.AddDays(-daysAgo), fraudSuspicionId));
+        }
+        
+        [GivenAttribute(@"the customer's fraud suspicion with id (.*) was resolved (.*) days ago")]
+        public void GivenTheCustomersFraudSuspicionWithIdWasResolvedDaysAgo(int fraudSuspicionId, int daysAgo)
+        {
+            var testAdapter = scenarioContext.Get<ActivityStoreTestAdapter>(ActivityStoreTestAdapterKey);
+            testAdapter.Register(new FraudSuspicionResolvedEvent(CustomerUnderTestId, DateTime.Now.AddDays(-daysAgo), fraudSuspicionId));
         }
         
         [When(@"the loyalty profile is evaluated")]
