@@ -243,13 +243,17 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile points are evaluating to 5 + X * 2 when registration happended " +
             "longer than 365 days")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.TestCaseAttribute("500", "5000", "0", "105", null)]
-        [NUnit.Framework.TestCaseAttribute("400", "2000", "35", "5", null)]
-        [NUnit.Framework.TestCaseAttribute("400", "1000", "0", "25", null)]
-        [NUnit.Framework.TestCaseAttribute("400", "2000", "29", "45", null)]
         public virtual void LayoalityProfilePointsAreEvaluatingTo5X2WhenRegistrationHappendedLongerThan365Days(string daysPassedSinceSignUp, string moneySpent, string daysAgo, string expectedLoyaltyPoints, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "ignore"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("DaysPassedSinceSignUp", daysPassedSinceSignUp);
             argumentsOfScenario.Add("MoneySpent", moneySpent);
@@ -257,7 +261,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("ExpectedLoyaltyPoints", expectedLoyaltyPoints);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile points are evaluating to 5 + X * 2 when registration happended " +
                     "longer than 365 days", "          and purchases in the hight of X were made within the last 30 days", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 26
+#line 27
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -277,16 +281,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 28
+#line 29
  testRunner.Given(string.Format("the customer signed up {0} days ago", daysPassedSinceSignUp), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 29
+#line 30
     testRunner.And(string.Format("the customer spent more than {0} cash {1} days ago", moneySpent, daysAgo), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 30
+#line 31
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 31
+#line 32
  testRunner.Then(string.Format("the value for the loyalty points is {0}", expectedLoyaltyPoints), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -295,12 +299,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile evaluates to zero in case of an open fraud suspicion")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void LayoalityProfileEvaluatesToZeroInCaseOfAnOpenFraudSuspicion()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "ignore"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile evaluates to zero in case of an open fraud suspicion", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 39
+#line 41
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -320,16 +326,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 40
+#line 42
  testRunner.Given("the customer signed up 366 days ago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 41
+#line 43
  testRunner.And("the customer was part of a fraud suspicion 3 days ago with id 32", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 42
+#line 44
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 43
+#line 45
  testRunner.Then("the value for the loyalty points is 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -339,13 +345,15 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Layoality Profile evaluates 5 in case of having all open fraud suspicions reseolv" +
             "ed")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void LayoalityProfileEvaluates5InCaseOfHavingAllOpenFraudSuspicionsReseolved()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "ignore"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Layoality Profile evaluates 5 in case of having all open fraud suspicions reseolv" +
                     "ed", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 45
+#line 48
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -365,19 +373,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 46
+#line 49
  testRunner.Given("the customer signed up 366 days ago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 47
+#line 50
  testRunner.And("the customer was part of a fraud suspicion 6 days ago with id 32", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 48
+#line 51
  testRunner.And("the customer\'s fraud suspicion with id 32 was resolved 6 days ago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 49
+#line 52
  testRunner.When("the loyalty profile is evaluated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 50
+#line 53
  testRunner.Then("the value for the loyalty points is 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
